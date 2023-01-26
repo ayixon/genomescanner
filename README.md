@@ -1,6 +1,5 @@
-<div align="center">
-<h1> ${\color{red}Fast  \space genome \space classifier  \space is \space a  \space tool \space that \space can  \space quickly \space  and  \space accurately \space classify \space prokaryotic  \space genomes}$ </h1>
-</div>
+${\color{White}Fast  \space genome \space classifier  \space is \space a  \space tool \space that \space can  \space quickly \space  and  \space accurately \space classify \space prokaryotic  \space genomes}$
+
 
   Experimental tool to taxonomically classify microbial genomes in a few minutes
 
