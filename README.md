@@ -27,7 +27,9 @@ DEPENDENCIES: Mash; JolyTree, apcalc, ncbi-entrez-direct, orthoani, Blast, Biopy
   
      ./GenoScanner.sh -i query_genome	
 
-The working directory must contain the mash database (.msh) and the query genome in fasta format. 
+> The working directory must contain the mash database (.msh) and the query genome in fasta format. 
+
+>  **preconfigured** database [DB Mash format](https://figshare.com/ndownloader/files/37939296)
 
 Rational: Compare a query_genome vs a curated MASH database, select the nearest phylogenetic neighbors; 
 Estimate the ANI of the query vs the references, store the genomes in a folder and pass them to JolyTree for phylogenetic estimation.                                   
