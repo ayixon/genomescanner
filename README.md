@@ -6,10 +6,11 @@
 COPYRIGHT="Copyright (C) 2022 Ayixon Sánchez Reyes"                                                               
 This program  is free software:  you can  redistribute it  and/or modify it  under the terms  of the GNU         
 General Public License as published by the Free Software Foundation.This program is distributed WITHOUT ANY WARRANTY.                                              
-                                                                                                                
-DEPENDENCIES: Mash; JolyTree, apcalc, ncbi-entrez-direct, orthoani, Blast, Biopython                               
+
+```diff
++DEPENDENCIES: Mash; JolyTree, apcalc, ncbi-entrez-direct, orthoani, Blast, Biopython                               
                                                                                                                
-*Before you begin, install the following*:                                                                 
+**Before you begin, install the following**:                                                                 
 
     sudo apt install mash
 
@@ -23,24 +24,27 @@ DEPENDENCIES: Mash; JolyTree, apcalc, ncbi-entrez-direct, orthoani, Blast, Biopy
 
     conda install -c bioconda jolytree
          
-  Usage:  
+  **Usage**:  
   
      ./GenoScanner.sh -i query_genome	
+ 
+ ```diff
+- The working directory must contain the mash database (.msh) and the query genome in fasta format
 
-> The working directory must contain the mash database (.msh) and the query genome in fasta format. 
-
->  **preconfigured** database [DB Mash format](https://figshare.com/ndownloader/files/37939296)
+- Preconfigured** database [DB Mash format](https://figshare.com/ndownloader/files/37939296)
+```
 
 Rational: Compare a query_genome vs a curated MASH database, select the nearest phylogenetic neighbors; 
 Estimate the ANI of the query vs the references, store the genomes in a folder and pass them to JolyTree for phylogenetic estimation.                                   
 
 Fast genome classifier deals with the "Phylophenetic Species Concept" by testing two of its hypotheses:
 
-    The Genomic Coherence measured through the genomic distance of Mash and the ANI
+    The Genomic Coherence measured through the genomic distance of Mash and ANI
      
     The phylogenetic hypothesis of monophyly
         
-Ayixon Sánchez-Reyes   ayixon@gmail.com 
+```diff
+@@ Ayixon Sánchez-Reyes   ayixon@gmail.com @@
 
 Computational Microbiology   
 
