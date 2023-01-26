@@ -1,5 +1,5 @@
 
-# Fast genome classifier is a tool for quickly and accurately classifying prokaryotic genomes
+# Fast genome classifier is a tool that can quickly and accurately classify prokaryotic genomes.
 
   Experimental tool to taxonomically classify microbial genomes in a few minutes
 
