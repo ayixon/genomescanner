@@ -9,7 +9,8 @@ General Public License as published by the Free Software Foundation.This program
 
 ```diff
 +DEPENDENCIES: Mash; JolyTree, apcalc, ncbi-entrez-direct, orthoani, Blast, Biopython                               
-                                                                                                               
+```                                                                                                               
+
 **Before you begin, install the following**:                                                                 
 
     sudo apt install mash
@@ -27,8 +28,9 @@ General Public License as published by the Free Software Foundation.This program
   **Usage**:  
   
      ./GenoScanner.sh -i query_genome	
- 
- ```diff
+     
+     
+```diff
 - The working directory must contain the mash database (.msh) and the query genome in fasta format
 
 - Preconfigured** database [DB Mash format](https://figshare.com/ndownloader/files/37939296)
