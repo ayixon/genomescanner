@@ -33,11 +33,13 @@ General Public License as published by the Free Software Foundation.This program
 ```diff
 - The working directory must contain the mash database (.msh) and the query genome in fasta format
 
-- Preconfigured** database [DB Mash format](https://figshare.com/ndownloader/files/37939296)
 ```
+> **Download preconfigured** database here [Mash DB format .msh](https://figshare.com/ndownloader/files/37939296)
 
-Rational: Compare a query_genome vs a curated MASH database, select the nearest phylogenetic neighbors; 
-Estimate the ANI of the query vs the references, store the genomes in a folder and pass them to JolyTree for phylogenetic estimation.                                   
+  > This database contains ~18,000 genomic records with standing in nomenclature
+
+Rational: Compare a query_genome vs a curated MASH database;  select the nearest phylogenetic neighbors; 
+Estimate the ANI of the query vs the references; store the genomes in a folder and pass them to JolyTree for phylogenetic estimation.                                   
 
 Fast genome classifier deals with the "Phylophenetic Species Concept" by testing two of its hypotheses:
 
