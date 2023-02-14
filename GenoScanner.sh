@@ -17,24 +17,24 @@
 #                                                                                                                  #
 ##########Before you begin, install the following:                                                                 #
 #
-##########  sudo apt install mash
+##########	sudo apt install mash
 ##########	sudo apt install apcalc
 ##########	sudo apt install ncbi-entrez-direct
-##########  sudo apt install ncbi-blast+ 
+##########	sudo apt install ncbi-blast+ 
 ########## 	pip install orthoani
 ########## 	conda install -c bioconda jolytree
-##########  conda install -c bfurneaux bptp       
+##########	conda install -c bfurneaux bptp       
 ####################################################################################################################
 #                                                                                                                  #
 ####################################################################################################################
-# Usage: ./GenoScanner.sh -i query_genome	                                                                                   #
+# Usage: ./GenoScanner.sh -i query_genome	                                                                   #
 # The working directory must contain the mash database (.msh) and the query genome in fasta format                 #
 ####################################################################################################################
 
 # Rational: Compare a query_genome vs a curated MASH database, select the nearest phylogenetic neighbors;   #
 # Estimate the ANI of the query vs the references, store the genomes in a folder                            #
 # and pass them to JolyTree for phylogenetic estimation
-# The tree is subjected to speciation hypothesis testing under Poisson Tree Processes Model                                                    #
+# The tree is subjected to speciation hypothesis testing under Poisson Tree Processes Model                 #
                                                                                                             #
 # FAST GENOME CLASSIFIER deals with the "Phylophenetic Species Concept" 
      # and "Mmolecular Species Delimitation" by testing three working hypotheses:                           #
