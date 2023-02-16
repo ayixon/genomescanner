@@ -1,0 +1,31 @@
+package:
+  name: genomescanner
+  version: 0.1
+
+source:
+  url: https://github.com/ayixon/genomescanner/blob/main/GenoScanner.sh
+  sha256: 94192abe90e3be0d1496767ea6a9a63cd336048f4df6e9c043624e0c8ded772e
+
+build:
+  number: 0
+
+requirements:
+  run:
+    - mash
+    - apcalc
+    - ncbi-entrez-direct
+    - ncbi-blast+
+  build: 
+    - pip
+  run:
+    - orthoani
+  build:
+    - conda
+  run:
+    - jolytree 
+    
+
+about:
+  home: https://github.com/ayixon/genomescanner
+  license: General Public License
+  summary: FAST GENOME CLASSIFIER:A TOOL FOR QUICKLY AND ACCURATELY CLASSIFYING PROKARYOTIC GENOMES
