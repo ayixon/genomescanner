@@ -13,17 +13,17 @@
 #                                                                                                                  #
 ####################################################################################################################
 ####################################################################################################################
-# DEPENDENCIES: Mash; JolyTree, apcalc, ncbi-entrez-direct, orthoani, Blast, Biopython, bPTP                       #  
+# DEPENDENCIES: Mash; JolyTree, apcalc, ncbi-entrez-direct, orthoani, Blast, Biopython, bPTP,mtp                   #  
 #                                                                                                                  #
-##########Before you begin, install the following:                                                                 #
+##########  Before you begin, install the following:                                                               #
 #
-##########	sudo apt install mash
-##########	sudo apt install apcalc
-##########	sudo apt install ncbi-entrez-direct
-##########	sudo apt install ncbi-blast+ 
-########## 	pip install orthoani
-########## 	conda install -c bioconda jolytree
-##########	conda install -c bfurneaux bptp       
+##########  sudo apt install mash
+##########  sudo apt install apcalc
+##########  sudo apt install ncbi-entrez-direct
+##########  sudo apt install ncbi-blast+ 
+##########  pip install orthoani
+##########  conda install -c bioconda jolytree
+##########  conda install -c bfurneaux bptp       
 ####################################################################################################################
 #                                                                                                                  #
 ####################################################################################################################
@@ -52,7 +52,7 @@
 #                                                                                                           #
 # ============                                                                                              #
 # = VERSIONS =      VERSION=1.0. Written by Ayixon Sánchez Reyes                                            # 
-VERSION=1.0                                                                                                 #                       
+#   VERSION=1.0                                                                                             #                       
 # ============                                                                                              #
 #############################################################################################################
 #############################################################################################################
@@ -125,20 +125,7 @@ head output.mash.txt
 cut -f3 output.mash.txt |head -n 100 > distancias 
 
 
-declare -A count
-
-while read -r num; do
-  count["$num"]=$((count["$num"] + 1))
-done < <(cut -f1 -d' ' distancias)
-
-for num in "${!count[@]}"; do
-  echo "$num"
-  if [ ${count["$num"]} -gt 1 ]; then
-    for ((i = 1; i <= ${count["$num"]} && i <= 2; i++)); do
-      echo "$num"
-    done
-  fi
-done > dist.uniq
+uniq distancias > dist.uniq
 
  echo "" 
 
@@ -171,7 +158,7 @@ echo ""
 #Selection and download of the neighboring genomes with the smallest genomic distance
 
 echo -e " \e[0;32mDownloading the reference genomes from NCBI   \e[0m " 
-echo "#####################################" 
+echo "#######################################################" 
 
 for z in $(fmt dist.uniq)
 do grep -F -m 1 "$z" output.mash.txt| awk '{print $2}'| sed 's/_[A-Z]/   / gI' | awk '{print $1}' >> Genome_accnumber.txt
