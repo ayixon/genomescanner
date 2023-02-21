@@ -13,7 +13,7 @@
 #                                                                                                                  #
 ####################################################################################################################
 ####################################################################################################################
-# DEPENDENCIES: Mash; JolyTree, apcalc, ncbi-entrez-direct, orthoani, Blast, Biopython, bPTP,mtp                   #  
+# DEPENDENCIES: Mash; JolyTree, apcalc, ncbi-entrez-direct, orthoani, Blast, Biopython, bPTP, mptp                   #  
 #                                                                                                                  #
 ##########  Before you begin, install the following:                                                               #
 #
