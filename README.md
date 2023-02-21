@@ -8,7 +8,7 @@ This program  is free software:  you can  redistribute it  and/or modify it  und
 General Public License as published by the Free Software Foundation.This program is distributed WITHOUT ANY WARRANTY.                                              
 
 ```diff
-+DEPENDENCIES: Mash; JolyTree, apcalc, ncbi-entrez-direct, orthoani, Blast, Biopython                               
++DEPENDENCIES: Mash; JolyTree, apcalc, ncbi-entrez-direct, orthoani, Blast, Biopython, bPTP, mptp                                 
 ```                                                                                                               
 
 **Before you begin, install the following**:                                                                 
@@ -24,10 +24,24 @@ General Public License as published by the Free Software Foundation.This program
     pip install orthoani
 
     conda install -c bioconda jolytree
+    
+    conda install -c bfurneaux bptp
+    
+    https://github.com/Pas-Kapli/mptp
          
   **Usage**:  
   
-     ./GenoScanner.sh -i query_genome	
+     ./GenoScanner.sh  -i <input_file> -d <database_file> -m <model>
+
+    "Options:"
+
+    "  -i <input_file>    Input fasta, fna, or fa archive"
+
+    "  -d <database_file> Database file in .msh format"
+
+    "  -m <model>         Select between two models: mptp or bptp"
+
+    "  -h                 Display this help message"
      
      
 ```diff
@@ -39,13 +53,15 @@ General Public License as published by the Free Software Foundation.This program
   > This database contains ~18,000 genomic records with standing in nomenclature
 
 Rational: Compare a query_genome vs a curated MASH database;  select the nearest phylogenetic neighbors; 
-Estimate the ANI of the query vs the references; store the genomes in a folder and pass them to JolyTree for phylogenetic estimation.                                   
+Estimate the ANI of the query vs the references; store the genomes in a folder and pass them to JolyTree for phylogenetic estimation. Finally, the tree is subjected to speciation hypothesis testing under Poisson Tree Processes Model.                                    
 
-Fast genome classifier deals with the "Phylophenetic Species Concept" by testing two of its hypotheses:
+Fast genome classifier deals with the "Phylophenetic Species Concept" by testing following hypotheses:
 
     The Genomic Coherence measured through the genomic distance of Mash and ANI
      
     The phylogenetic hypothesis of monophyly
+    
+    The molecular speciation under Poisson Tree Processes Model
         
 ```diff
 @@ Ayixon Sánchez-Reyes   ayixon@gmail.com @@
