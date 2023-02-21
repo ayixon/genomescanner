@@ -13,7 +13,7 @@
 #                                                                                                                  #
 ####################################################################################################################
 ####################################################################################################################
-# DEPENDENCIES: Mash; JolyTree, apcalc, ncbi-entrez-direct, orthoani, Blast, Biopython, bPTP, mptp                   #  
+# DEPENDENCIES: Mash; JolyTree, apcalc, ncbi-entrez-direct, orthoani, Blast, Biopython, bPTP, mptp                 #  
 #                                                                                                                  #
 ##########  Before you begin, install the following:                                                               #
 #
@@ -23,11 +23,11 @@
 ##########  sudo apt install ncbi-blast+ 
 ##########  pip install orthoani
 ##########  conda install -c bioconda jolytree
-##########  conda install -c bfurneaux bptp       
+##########  conda install -c bfurneaux bptp 
+##########  https://github.com/Pas-Kapli/mptp
 ####################################################################################################################
 #                                                                                                                  #
 ####################################################################################################################
-# Usage: ./GenoScanner.sh -i query_genome	                                                                   #
 # The working directory must contain the mash database (.msh) and the query genome in fasta format                 #
 ####################################################################################################################
 
