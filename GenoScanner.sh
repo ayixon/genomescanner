@@ -37,7 +37,7 @@
 # The tree is subjected to speciation hypothesis testing under Poisson Tree Processes Model                 #
                                                                                                             #
 # FAST GENOME CLASSIFIER deals with the "Phylophenetic Species Concept" 
-     # and "Mmolecular Species Delimitation" by testing three working hypotheses:                           #
+     # and "Molecular Species Delimitation" by testing three working hypotheses:                           #
      # The Genomic Coherence measured through the genomic distance of Mash and the ANI                      #
      # The Phylogenetic Hypothesis of monophyly
      # The speciation or coalescence hypothesis under the Poisson tree processes model                      #
@@ -161,7 +161,7 @@ echo -e " \e[0;32mDownloading the reference genomes from NCBI   \e[0m "
 echo "#######################################################" 
 
 for z in $(fmt dist.uniq)
-do grep -F -m 1 "$z" output.mash.txt| awk '{print $2}'| sed 's/_[A-Z]/   / gI' | awk '{print $1}' >> Genome_accnumber.txt
+do grep -F -m 3 "$z" output.mash.txt| awk '{print $2}'| sed 's/_[A-Z]/   / gI' | awk '{print $1}' >> Genome_accnumber.txt
   done
    echo ""
 
