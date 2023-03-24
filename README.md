@@ -13,7 +13,7 @@ General Public License as published by the Free Software Foundation.This program
 
 **Before you begin, install the following**:                                                                 
 
-    sudo apt install mash
+    sudo apt install mptp
 
     sudo apt install apcalc
 
@@ -23,12 +23,11 @@ General Public License as published by the Free Software Foundation.This program
 
     pip install orthoani
 
-    conda install -c bioconda jolytree
+    mamba install -c bioconda jolytree
     
-    conda install -c bfurneaux bptp
+    mamba install -c bfurneaux bptp
     
-    https://github.com/Pas-Kapli/mptp
-         
+           
   **Usage**:  
   
      ./GenoScanner.sh  -i <input_file> -d <database_file> -m <model>
