@@ -41,8 +41,13 @@ General Public License as published by the Free Software Foundation.This program
     "  -m <model>         Select between two models: mptp or bptp"
 
     "  -h                 Display this help message"
-     
-     
+    
+```diff
+- (bPTP is the default option in our program because it works best for the speciation hypothesis, according to our experience.
+
+```   
+   
+   
 ```diff
 - The working directory must contain the mash database (.msh) and the query genome in fasta format
 
