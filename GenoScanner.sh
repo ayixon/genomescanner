@@ -13,9 +13,9 @@
 #                                                                                                                  #
 ####################################################################################################################
 ####################################################################################################################
-# DEPENDENCIES: Mash; JolyTree, apcalc, ncbi-entrez-direct, orthoani, Blast, Biopython, bPTP, mptp                 #  
+# DEPENDENCIES: Mash; JolyTree, apcalc, ncbi-entrez-direct, orthoani, Blast, Biopython, bPTP                       #  
 #                                                                                                                  #
-##########  Before you begin, install the following:                                                               #
+##########Before you begin, install the following:                                                                 #
 #
 ##########  sudo apt install mash
 ##########  sudo apt install apcalc
@@ -23,11 +23,12 @@
 ##########  sudo apt install ncbi-blast+ 
 ##########  pip install orthoani
 ##########  conda install -c bioconda jolytree
-##########  conda install -c bfurneaux bptp 
-##########  https://github.com/Pas-Kapli/mptp
+##########  conda install -c bfurneaux bptp  
+##########  https://github.com/Pas-Kapli/mptp     
 ####################################################################################################################
 #                                                                                                                  #
 ####################################################################################################################
+# Usage: ./GenoScanner.sh -i query_genome	-d mash_database.msh  -m model   # model is optional                   #
 # The working directory must contain the mash database (.msh) and the query genome in fasta format                 #
 ####################################################################################################################
 
@@ -37,7 +38,7 @@
 # The tree is subjected to speciation hypothesis testing under Poisson Tree Processes Model                 #
                                                                                                             #
 # FAST GENOME CLASSIFIER deals with the "Phylophenetic Species Concept" 
-     # and "Molecular Species Delimitation" by testing three working hypotheses:                           #
+     # and "Mmolecular Species Delimitation" by testing three working hypotheses:                           #
      # The Genomic Coherence measured through the genomic distance of Mash and the ANI                      #
      # The Phylogenetic Hypothesis of monophyly
      # The speciation or coalescence hypothesis under the Poisson tree processes model                      #
@@ -52,10 +53,11 @@
 #                                                                                                           #
 # ============                                                                                              #
 # = VERSIONS =      VERSION=1.0. Written by Ayixon Sánchez Reyes                                            # 
-#   VERSION=1.0                                                                                             #                       
+VERSION=1.0                                                                                                 #                       
 # ============                                                                                              #
 #############################################################################################################
 #############################################################################################################
+
 
 # Use getopts to parse the input options
 
@@ -112,14 +114,16 @@ else
   echo "bptp selected by default"
 fi
 
+exec > >(tee log.txt) 2>&1
+
 # Estimate Mash distance with the input files
   mash dist $input_file $database_file -p 10| sort -n -k3 > output.mash.txt; 
  echo "" 
  echo -e "	\e[0;32mMASH analysis finished. These are the top hits   \e[0m " 
 
- echo "	Query	Reference	D	p_value	shared hashed"
+ echo "	Query	Reference	D	p_value	shared hashed"|column -t -s ','
 
-head output.mash.txt
+head output.mash.txt||column -t -s ','
 
 
 cut -f3 output.mash.txt |head -n 100 > distancias 
@@ -128,14 +132,14 @@ cut -f3 output.mash.txt |head -n 100 > distancias
 uniq distancias > dist.uniq
 
  echo "" 
-
+ echo -e " \e[0;32m==============================================================================================================   \e[0m "
  echo -e " \e[0;32mPrinting the distance table (Mash D)   \e[0m " 
 
  echo "" 
 
 echo -e "	\e[0;32mThese are the closest genomes to your query and their approximate ANI   \e[0m " 
 
-# Approximate ANI estimation as 1-Distance
+# Approximate ANI as 1-Distance
 echo "" 
 
 for i in $(fmt dist.uniq)
@@ -157,11 +161,12 @@ echo ""
 
 #Selection and download of the neighboring genomes with the smallest genomic distance
 
+echo -e " \e[0;32m==============================================================================================================   \e[0m "
 echo -e " \e[0;32mDownloading the reference genomes from NCBI   \e[0m " 
 echo "#######################################################" 
 
 for z in $(fmt dist.uniq)
-do grep -F -m 3 "$z" output.mash.txt| awk '{print $2}'| sed 's/_[A-Z]/   / gI' | awk '{print $1}' >> Genome_accnumber.txt
+do grep -F -m 1 "$z" output.mash.txt| awk '{print $2}'| sed 's/_[A-Z]/   / gI' | awk '{print $1}' >> Genome_accnumber.txt
   done
    echo ""
 
@@ -178,6 +183,7 @@ cat Genome_accnumber.txt | while read -r acc ; do
     done
 echo "" 
 echo -e " \e[0;32mDownload successful   \e[0m "
+echo -e " \e[0;32m==============================================================================================================   \e[0m "
 echo "" 
 gzip -d *.gz
 #Genomes are copied to a separate directory for phylogenetic analysis
@@ -190,9 +196,9 @@ mkdir Mash_out
 cp dist.uniq distancias Mash_out/ 
 
 mkdir JolyTree_in 
-cp *.fna JolyTree_in/
-cp *.fasta JolyTree_in/
-cp *.fa JolyTree_in/
+cp *.fna JolyTree_in/ 2>/dev/null || true
+cp *.fasta JolyTree_in/ 2>/dev/null || true
+cp *.fa JolyTree_in/ 2>/dev/null || true
 
 JolyTree.sh -i JolyTree_in/ -b out_tree -t 10 
 	
@@ -200,13 +206,14 @@ mkdir JolyTree_out
 cp out_tree* JolyTree_out/
 echo ""
 echo -e " \e[0;32m#Phylogenetic analysis finished, results are in the directory JolyTree_out  \e[0m" 
+echo -e " \e[0;32m==============================================================================================================   \e[0m "
 echo ""
 
 echo -e " \e[0;32m#Computing OrthoAni  \e[0m "
-echo "--------------------"
+echo "---------------------------------------"
 echo  Genome_Query: $input_file 
 
-rm *.fna
+rm *.fna 2>/dev/null || true
 rm out_tree*
 
 cp Genome_accnumber.txt output.mash.txt Mash_out/ 
@@ -227,7 +234,8 @@ mkdir OrthoANI_out
 cp JolyTree_in/*.txt OrthoANI_out/
 echo "" 
 rm JolyTree_in/*.txt
-rm *.gz
+rm *.gz 2>/dev/null || true
+echo -e " \e[0;32m==============================================================================================================   \e[0m "
 echo ""
 
 echo -e " \e[0;32m#Computing Species Delimitation under Markov Chain Monte Carlo  \e[0m "
@@ -254,7 +262,8 @@ cd .. ; \
 cp JolyTree_out/PTP*  sp_Results/ ; \
 
 echo -e " \e[0;32mSpeciation test done, look at the sp_Results directory  \e[0m "
-
+echo ""
+echo -e " \e[0;32m==============================================================================================================   \e[0m "
 echo ""
 	echo -e " \e[0;32mFast_Genome_Classifier pipeline done  \e[0m "
 echo ""
