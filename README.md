@@ -1,5 +1,5 @@
 ```diff
-- Experimental tool to taxonomically classify microbial genomes in a few minutes
+- EXPERIMENTAL tool to taxonomically classify microbial genomes in a few minutes
 
 ``` 
 
