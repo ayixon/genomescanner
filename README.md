@@ -23,6 +23,8 @@ Install the dependencies
 
     sudo apt install -y mptp apcalc ncbi-entrez-direct ncbi-blast+
 
+    Note: in some distribution ncbi-blast+ from aptitude doesn´t work. Install with conda instead
+
 Install Python packages
 
     pip install orthoani
