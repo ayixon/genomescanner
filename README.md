@@ -13,19 +13,25 @@ General Public License as published by the Free Software Foundation.This program
 
 **Before you begin, install the following**:                                                                 
 
-    sudo apt install mptp
+    sudo apt update
 
-    sudo apt install apcalc
+    sudo apt upgrade -y
 
-    sudo apt install ncbi-entrez-direct
+    sudo apt install -y build-essential
 
-    sudo apt install ncbi-blast+ 
+Install the dependencies
+
+    sudo apt install -y mptp apcalc ncbi-entrez-direct ncbi-blast+
+
+Install Python packages
 
     pip install orthoani
 
-    mamba install -c bioconda jolytree
-    
-    mamba install -c bfurneaux bptp
+Install Conda packages
+
+    mamba install -y -c bioconda jolytree
+
+    mamba install -y -c bfurneaux bptp
     
            
   **Usage**:  
